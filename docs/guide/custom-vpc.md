@@ -1,15 +1,6 @@
-# VPC 使用
+# 自定义 VPC 使用
 
-Kube-OVN 支持多租户隔离级别的 VPC 网络。不同 VPC 网络相互独立，可以分别配置 Subnet 网段，
-路由策略，安全策略，出网网关，EIP 等配置。
-
-> VPC 主要用于有多租户网络强隔离的场景，部分 Kubernetes 网络功能在多租户网络下存在冲突。
-> 例如节点和 Pod 互访，NodePort 功能，基于网络访问的健康检查和 DNS 能力在多租户网络场景暂不支持。
-> 为了方便常见 Kubernetes 的使用场景，Kube-OVN 默认 VPC 做了特殊设计，该 VPC 下的 Subnet
-> 可以满足 Kubernetes 规范。用户自定义 VPC 支持本文档介绍的静态路由，EIP 和 NAT 网关等功能。
-> 常见隔离需求可通过默认 VPC 下的网络策略和子网 ACL 实现，在使用自定义 VPC 前请明确是否需要
-> VPC 级别的隔离，并了解自定义 VPC 下的限制。
-> 在 Underlay 网络下，物理交换机负责数据面转发，VPC 无法对 Underlay 子网进行隔离。
+和默认 VPC 不同，自定义 VPC 和 node 以及其他 VPC 互相隔离
 
 ![](../static/network-topology.png)
 
